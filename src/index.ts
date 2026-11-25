@@ -1,0 +1,21 @@
+import express from "express";
+import cors from "cors";
+import dotenv from "dotenv";
+dotenv.config();
+import "./DB/index";
+import authRouter from "./routers/auth";
+import productRoter from "./routers/product";
+import orderRoter from "./routers/Order";
+import paymentRoter from "./routers/payment";
+import { PORT } from "./util/variable";
+const app = express();
+app.use(cors({ origin: true, credentials: true }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use("/auth", authRouter);
+app.use("/products", productRoter);
+app.use("/orders", orderRoter);
+app.use("/payments", paymentRoter);
+app.listen(PORT, () => {
+  console.log("port is listening on port " + PORT);
+});

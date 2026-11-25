@@ -1,0 +1,1 @@
+export const RupeesTopaise = (paise: number): number => paise * 100;
